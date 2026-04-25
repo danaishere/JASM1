@@ -1,11 +1,9 @@
-// routes/products.js — Admin UI routes for managing crochet products
 
 import express from 'express';
 import Product from '../models/product.js';
 
 const router = express.Router();
 
-// GET /products — show all products in admin view
 router.get('/', async (req, res) => {
   try {
     const products = await Product.find().sort({ createdAt: -1 });
@@ -15,12 +13,11 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET /products/add — show add form
 router.get('/add', (req, res) => {
   res.render('add-product', { title: 'Add Product' });
 });
 
-// POST /products/add — save new product to database
+// save new product to database
 router.post('/add', async (req, res) => {
   try {
     const { name, description, category, price, stockQuantity, inStock } = req.body;
@@ -39,7 +36,7 @@ router.post('/add', async (req, res) => {
   }
 });
 
-// POST /products/delete/:id — delete a product by ID
+// delete a product by ID
 router.post('/delete/:id', async (req, res) => {
   try {
     await Product.findByIdAndDelete(req.params.id);

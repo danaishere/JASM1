@@ -1,11 +1,10 @@
-// routes/patterns.js — Admin UI routes for managing crochet patterns
 
 import express from 'express';
 import Pattern from '../models/pattern.js';
 
 const router = express.Router();
 
-// GET /patterns — show all patterns in admin view
+// show all patterns in admin view
 router.get('/', async (req, res) => {
   try {
     const patterns = await Pattern.find().sort({ createdAt: -1 });
@@ -15,12 +14,12 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET /patterns/add — show add form
+
 router.get('/add', (req, res) => {
   res.render('add-pattern', { title: 'Add Pattern' });
 });
 
-// POST /patterns/add — save new pattern to database
+//save new pattern to db
 router.post('/add', async (req, res) => {
   try {
     const { name, description, difficulty, category, hookSize, materials, isFree, price } = req.body;
@@ -41,7 +40,7 @@ router.post('/add', async (req, res) => {
   }
 });
 
-// POST /patterns/delete/:id — delete a pattern by ID
+// delete a pattern by ID
 router.post('/delete/:id', async (req, res) => {
   try {
     await Pattern.findByIdAndDelete(req.params.id);

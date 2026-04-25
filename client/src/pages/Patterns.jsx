@@ -21,7 +21,7 @@ function Patterns() {
     <div className="page">
       <h1>Crochet Patterns</h1>
       {patterns.length === 0 ? (
-        <p>No patterns yet — check back soon!</p>
+        <p>No patterns yet, check back soon!</p>
       ) : (
         <div className="card-grid">
           {patterns.map(p => (
@@ -29,7 +29,7 @@ function Patterns() {
               <h2>{p.name}</h2>
               <p>{p.description}</p>
               <span className="badge">{p.difficulty}</span>
-              <p>{p.isFree ? '🆓 Free' : `$${p.price}`}</p>
+              <p>{p.isFree ? 'Free' : `$${p.price}`}</p>
             </div>
           ))}
         </div>

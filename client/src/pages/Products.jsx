@@ -21,7 +21,7 @@ function Products() {
     <div className="page">
       <h1>Shop Products</h1>
       {products.length === 0 ? (
-        <p>No products yet — check back soon!</p>
+        <p>No products yet, check back soon!</p>
       ) : (
         <div className="card-grid">
           {products.map(p => (
