@@ -1,10 +1,12 @@
+// routes/api.js — Public JSON API endpoints consumed by the React frontend
+
 import express from 'express';
-import Pattern from '../models/Pattern.js';
-import Product from '../models/Product.js';
+import Pattern from '../models/pattern.js';
+import Product from '../models/product.js';
 
 const router = express.Router();
 
-// GET /api/patterns — JSON feed for React frontend
+// GET /api/patterns — return all patterns as JSON
 router.get('/patterns', async (req, res) => {
   try {
     const patterns = await Pattern.find().sort({ createdAt: -1 });
@@ -14,7 +16,7 @@ router.get('/patterns', async (req, res) => {
   }
 });
 
-// GET /api/products — JSON feed for React frontend
+// GET /api/products — return all products as JSON
 router.get('/products', async (req, res) => {
   try {
     const products = await Product.find().sort({ createdAt: -1 });
