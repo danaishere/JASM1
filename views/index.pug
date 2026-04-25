@@ -1,0 +1,19 @@
+extends common/layout
+
+block content
+  h1 Dashboard
+  
+  if error
+    p.error #{error}
+  
+  .stats
+    div
+      h3 Patterns: #{patternCount || 0}
+      a(href="/patterns") Manage Patterns
+    div
+      h3 Products: #{productCount || 0}
+      a(href="/products") Manage Products
+  
+  .actions
+    a(href="/patterns/add") Add Pattern
+    a(href="/products/add") Add Product

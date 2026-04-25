@@ -1,0 +1,44 @@
+extends common/layout
+
+block content
+  h1 Add New Product
+  
+  if error
+    p.error #{error}
+  
+  form(method="POST" action="/products/add")
+    div
+      label Name:
+      input(type="text" name="name" required)
+    
+    div
+      label Description:
+      textarea(name="description" required)
+    
+    div
+      label Category:
+      select(name="category" required)
+        option(value="") Select
+        option(value="Yarn") Yarn
+        option(value="Hooks") Hooks
+        option(value="Accessories") Accessories
+        option(value="Kits") Kits
+        option(value="Books") Books
+        option(value="Other") Other
+    
+    div
+      label Price:
+      input(type="number" name="price" step="0.01" min="0" required)
+    
+    div
+      label Stock Quantity:
+      input(type="number" name="stockQuantity" min="0")
+    
+    div
+      label
+        input(type="checkbox" name="inStock" checked)
+        | In Stock
+    
+    div
+      button(type="submit") Add Product
+      a(href="/products") Cancel

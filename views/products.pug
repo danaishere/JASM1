@@ -1,0 +1,21 @@
+extends common/layout
+
+block content
+  h1 Products
+  a(href="/products/add") Add New Product
+  
+  if error
+    p.error #{error}
+  
+  if products && products.length > 0
+    each product in products
+      .item
+        h3 #{product.name}
+        p #{product.description}
+        p Category: #{product.category}
+        p Price: $#{product.price}
+        p Stock: #{product.inStock ? 'In Stock (' + product.stockQuantity + ')' : 'Out of Stock'}
+        form(method="POST" action=`/products/delete/${product._id}` style="display: inline")
+          button(type="submit" onclick="return confirm('Delete this product?')") Delete
+  else
+    p No products found.

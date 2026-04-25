@@ -1,0 +1,58 @@
+extends common/layout
+
+block content
+  h1 Add New Pattern
+  
+  if error
+    p.error #{error}
+  
+  form(method="POST" action="/patterns/add")
+    div
+      label Name:
+      input(type="text" name="name" required)
+    
+    div
+      label Description:
+      textarea(name="description" required)
+    
+    div
+      label Difficulty:
+      select(name="difficulty" required)
+        option(value="") Select
+        option(value="Beginner") Beginner
+        option(value="Easy") Easy
+        option(value="Intermediate") Intermediate
+        option(value="Advanced") Advanced
+        option(value="Expert") Expert
+    
+    div
+      label Category:
+      select(name="category" required)
+        option(value="") Select
+        option(value="Clothing") Clothing
+        option(value="Accessories") Accessories
+        option(value="Home Decor") Home Decor
+        option(value="Toys") Toys
+        option(value="Blankets") Blankets
+        option(value="Other") Other
+    
+    div
+      label Hook Size:
+      input(type="text" name="hookSize" required placeholder="e.g., 5.0mm")
+    
+    div
+      label Materials (comma-separated):
+      input(type="text" name="materials" required placeholder="Yarn, scissors, needle")
+    
+    div
+      label
+        input(type="checkbox" name="isFree" checked)
+        | Free Pattern
+    
+    div
+      label Price (if not free):
+      input(type="number" name="price" step="0.01" min="0")
+    
+    div
+      button(type="submit") Add Pattern
+      a(href="/patterns") Cancel
